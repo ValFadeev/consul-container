@@ -11,13 +11,13 @@
 ### Development
 
 ```
-docker run -it --rm --name consul oslbuild/consul consul agent -dev
+docker run -it --rm --name consul -p 8500:8500 oslbuild/consul consul agent -dev
 ```
 
 ### Custom configuration
 
 ```
-docker run -it --rm --name -v /path/to/config/:/config consul oslbuild/consul
+docker run -it --rm --name -v /path/to/config/:/config -p 8500:8500 consul oslbuild/consul
 ```
 
 ### Custom user
@@ -25,6 +25,6 @@ docker run -it --rm --name -v /path/to/config/:/config consul oslbuild/consul
 Assuming `/path/to/config` is readable by host user with id `9001`
 
 ```
-docker run -it --rm --name -v /path/to/config/:/config -e CONSUL_UID=9001 consul oslbuild/consul
+docker run -it --rm --name -v /path/to/config/:/config -e CONSUL_UID=9001 -p 8500:8500 consul oslbuild/consul
 ```
 
