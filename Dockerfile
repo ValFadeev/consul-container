@@ -1,9 +1,8 @@
 FROM alpine:3.5
 
-# Install config
 ENV \
-  CONSUL_VERSION=0.8.3 \
-  CONSUL_SHA256=f894383eee730fcb2c5936748cc019d83b220321efd0e790dae9a3266f5d443a \
+  CONSUL_VERSION=0.8.4 \
+  CONSUL_SHA256=c8859a0a34c50115cdff147f998b2b63226f5f052e50f342209142420d1c2668 \
   CONSUL_CLI_VERSION=0.3.1 \
   GLIBC_VERSION=2.25-r0 \
   DUMB_INIT_VERSION=1.2.0-r0 \
@@ -26,7 +25,7 @@ RUN \
   curl -Ls https://github.com/sgerrand/alpine-pkg-glibc/releases/download/${GLIBC_VERSION}/glibc-${GLIBC_VERSION}.apk > /tmp/${GLIBC_VERSION}.apk && \
   apk add --allow-untrusted /tmp/${GLIBC_VERSION}.apk && \
   rm -rf /tmp/${GLIBC_VERSION}.apk /var/cache/apk/* && \
-
+  \
   echo "Installing Consul.." && \
   curl -Ls https://releases.hashicorp.com/consul/${CONSUL_VERSION}/consul_${CONSUL_VERSION}_linux_amd64.zip > /tmp/consul.zip && \
   echo "${CONSUL_SHA256}  /tmp/consul.zip" > /tmp/consul.sha256 && \
@@ -34,16 +33,15 @@ RUN \
   cd /bin && \
   unzip /tmp/consul.zip && \
   chmod +x /bin/consul && \
-  rm /tmp/consul.zip
-
-RUN \
+  rm /tmp/consul.zip && \
+  \
   echo "Installing Consul web ui.." && \
   mkdir /ui && \
   cd /ui && \
   curl -Ls https://releases.hashicorp.com/consul/${CONSUL_VERSION}/consul_${CONSUL_VERSION}_web_ui.zip -o /ui/webui.zip && \
   unzip webui.zip && \
   rm webui.zip && \
-
+  \
   echo "Installing Consul cli.." && \
   curl -Ls https://github.com/CiscoCloud/consul-cli/releases/download/v${CONSUL_CLI_VERSION}/consul-cli_${CONSUL_CLI_VERSION}_linux_amd64.tar.gz -o /tmp/consul-cli.tar.gz && \
   cd /tmp && \
@@ -51,7 +49,7 @@ RUN \
   mv consul-cli_${CONSUL_CLI_VERSION}_linux_amd64/consul-cli /bin/consul-cli && \
   chmod +x /bin/consul-cli && \
   rm /tmp/consul-cli.tar.gz && \
-
+  \
   echo "Creating config directory.." && \
   mkdir /config
 
