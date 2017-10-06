@@ -1,13 +1,13 @@
-FROM alpine:3.5
+FROM alpine:3.6
 
 ENV \
-  CONSUL_VERSION=0.8.4 \
-  CONSUL_SHA256=c8859a0a34c50115cdff147f998b2b63226f5f052e50f342209142420d1c2668 \
+  CONSUL_VERSION=0.9.3 \
+  CONSUL_SHA256=9c6d652d772478d9ff44b6decdd87d980ae7e6f0167ad0f7bd408de32482f632 \
   CONSUL_CLI_VERSION=0.3.1 \
   GLIBC_VERSION=2.25-r0 \
   DUMB_INIT_VERSION=1.2.0-r0 \
   SU_EXEC_VERSION=0.2-r0 \
-  MONITORING_PLUGINS_VERSION=2.2-r0 \
+  MONITORING_PLUGINS_VERSION=2.2-r1 \
   GOMAXPROCS=2
 
 RUN \
@@ -34,13 +34,6 @@ RUN \
   unzip /tmp/consul.zip && \
   chmod +x /bin/consul && \
   rm /tmp/consul.zip && \
-  \
-  echo "Installing Consul web ui.." && \
-  mkdir /ui && \
-  cd /ui && \
-  curl -Ls https://releases.hashicorp.com/consul/${CONSUL_VERSION}/consul_${CONSUL_VERSION}_web_ui.zip -o /ui/webui.zip && \
-  unzip webui.zip && \
-  rm webui.zip && \
   \
   echo "Installing Consul cli.." && \
   curl -Ls https://github.com/CiscoCloud/consul-cli/releases/download/v${CONSUL_CLI_VERSION}/consul-cli_${CONSUL_CLI_VERSION}_linux_amd64.tar.gz -o /tmp/consul-cli.tar.gz && \

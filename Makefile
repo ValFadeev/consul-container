@@ -7,4 +7,4 @@ upload:
 	docker push $(DOCKER_IMAGE_NAME):latest
 
 test-run: build
-	docker run -it --rm --name consul -p 8500:8500 oslbuild/consul consul agent -dev
+	docker run -it --rm --name consul -p 8500:8500 oslbuild/consul consul agent -dev -client 0.0.0.0
