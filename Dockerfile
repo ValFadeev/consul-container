@@ -54,4 +54,4 @@ EXPOSE 8300 8301 8301/udp 8302 8302/udp 8400 8500 8600 8600/udp
 
 ENTRYPOINT ["/bin/entrypoint.sh"]
 
-CMD ["/bin/consul", "agent", "-config-dir=/config"]
+CMD ["/bin/consul", "agent", "-dev", "-client=0.0.0.0", "-config-dir=/config"]
