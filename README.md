@@ -2,8 +2,6 @@
 
 [![Docker Stars](https://img.shields.io/docker/stars/beyondrepair/consul-container.svg)](https://hub.docker.com/r/beyondrepair/consul-container)
 [![Docker Pulls](https://img.shields.io/docker/pulls/beyondrepair/consul-container.svg)](https://hub.docker.com/r/beyondrepair/consul-container)
-[![ImageLayers Size](https://img.shields.io/imagelayers/image-size/beyondrepair/consul-container/latest.svg)](https://hub.docker.com/r/beyondrepair/consul-container)
-[![ImageLayers Layers](https://img.shields.io/imagelayers/layers/beyondrepair/consul-container/latest.svg)](https://hub.docker.com/r/beyondrepair/consul-container)
 
 ## Contents
 
